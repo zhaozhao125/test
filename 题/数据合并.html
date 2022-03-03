@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div disabled onclick="alert(123)">wwewwe</div>
+    <script>
+      /**
+       * 解题思路：
+       * 双指针 从头到尾比较 两个数组的第一个值，根据值的大小依次插入到新的数组中
+       * 空间复杂度：O(m + n)
+       * 时间复杂度：O(m + n)
+       * @param {Array} arr1
+       * @param {Array} arr2
+       */
+
+      function merge(arr1, arr2) {
+        var result = [];
+        while (arr1.length > 0 && arr2.length > 0) {
+          if (arr1[0] < arr2[0]) {
+            /*shift()方法用于把数组的第一个元素从其中删除，并返回第一个元素的值。*/
+            result.push(arr1.shift());
+          } else {
+            result.push(arr2.shift());
+          }
+        }
+        return result.concat(arr1).concat(arr2);
+      }
+
+      function mergeSort(arr) {
+        let lengthArr = arr.length;
+        if (lengthArr === 0) {
+          return [];
+        }
+        while (arr.length > 1) {
+          let arrayItem1 = arr.shift();
+          console.log(arrayItem1, 1);
+          let arrayItem2 = arr.shift();
+          console.log(arrayItem2, 2);
+          let mergeArr = merge(arrayItem1, arrayItem2);
+          arr.push(mergeArr);
+        }
+        console.log(arr, "arr");
+        return arr[0];
+      }
+      let arr1 = [
+        [1, 2, 4, 3],
+        [4, 6, 5],
+        // [7, 8, 9],
+        // [1, 2, 3],
+        // [4, 5, 6],
+      ];
+      let arr2 = [
+        [1, 4, 6],
+        [7, 8, 10],
+        [2, 6, 9],
+        [3, 7, 13],
+        [1, 5, 12],
+      ];
+      mergeSort(arr1);
+      //mergeSort(arr2);
+
+      const test = [1, 2, 3];
+      console.log(test.shift());
+      console.log(test);
+
+      const loactionPath =
+        "/osc/workspaces/zjp/boards/94d4afdd-48dd-42ae-a0f9-4d3b0cbdc652";
+      const splitArr = loactionPath.split("/");
+      console.log(splitArr, "splitArr");
+
+      const testObj = {
+        context: {
+          itemId: "123",
+          env: {
+            TENANT_KEY: "osc",
+          },
+        },
+      };
+      const {
+        context: {
+          itemId,
+          env: { TENANT_KEY },
+        },
+      } = testObj;
+      console.log(itemId);
+      console.log(TENANT_KEY);
+
+      let inValue = 1;
+      const inValueFc = (inValue) => {
+        console.log(inValue);
+        inValue = 123;
+      };
+      inValueFc(inValue);
+      console.log(inValue, "inValue");
+      const testObj1 = {
+        t: {
+          a: 1,
+          b: 2,
+        },
+        t1: {
+          c: 1,
+          d: 2,
+        },
+      };
+      delete testObj1.t.a
+      console.log(testObj1, 'testObj1')
+    </script>
+  </body>
+</html>
