@@ -18,15 +18,7 @@ var Thunk = function(fn){
     }
   };
 };
-// var readFileThunk = Thunk(function() {
-// 	console.log(123)
-// });
-// // readFileThunk(fileA)(callback);
-// console.log(readFileThunk)
-// // readFileThunk('a')
-// console.log(readFileThunk('a', 'b')(function() {
-// 	console.log(456)
-// }))
+
 function f(a, cb) {
   cb(a);
 }
