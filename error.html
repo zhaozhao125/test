@@ -1,30 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-</head>
-<body>
-	
-</body>
-<script>
-var Thunk = function(fn){
-  return function (){
-    var args = Array.prototype.slice.call(arguments);
-    console.log(args, 'args')
-    return function (callback){
-      args.push(callback);
-      return fn.apply(this, args);
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    var Thunk = function (fn) {
+      return function () {
+        var args = Array.prototype.slice.call(arguments);
+        console.log(args, "args");
+        return function (callback) {
+          args.push(callback);
+          return fn.apply(this, args);
+        };
+      };
+    };
+    console.log(2);
+    console.log(3);
+    function f(a, cb) {
+      cb(a);
     }
-  };
-};
+    const ft = Thunk(f);
 
-function f(a, cb) {
-  cb(a);
-}
-const ft = Thunk(f);
-
-console.log(ft, 'ft')
-console.log(ft(1),  '1')
-</script>
+    console.log(ft, "ft");
+    console.log(ft(1), "1");
+  </script>
 </html>
